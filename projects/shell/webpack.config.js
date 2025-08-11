@@ -2,13 +2,13 @@ const { withModuleFederationPlugin } = require('@angular-architects/module-feder
 
 module.exports = withModuleFederationPlugin({
   remotes: {
-    auth: "auth@http://localhost:4201/remoteEntry.js",
-    admin: "admin@http://localhost:4202/remoteEntry.js",
-    gps: "gps@http://localhost:4203/remoteEntry.js"
+    auth: "http://localhost:4201/remoteEntry.js",
+    admin: "http://localhost:4202/remoteEntry.js",
+    gps: "http://localhost:4203/remoteEntry.js"
   },
   shared: {
-    "@angular/core": { singleton: true, strictVersion: true },
-    "@angular/common": { singleton: true, strictVersion: true },
-    "@angular/router": { singleton: true, strictVersion: true },
-  },
+    "@angular/core": { singleton: true, strictVersion: true, requiredVersion: '20.1.6' },
+    "@angular/common": { singleton: true, strictVersion: true, requiredVersion: '20.1.6' },
+    "@angular/router": { singleton: true, strictVersion: true, requiredVersion: '20.1.6' }
+  }
 });
