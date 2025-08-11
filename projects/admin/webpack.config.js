@@ -1,10 +1,9 @@
 const { withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
-  remotes: {
-    auth: "auth@http://localhost:4201/remoteEntry.js",
-    admin: "admin@http://localhost:4202/remoteEntry.js",
-    gps: "gps@http://localhost:4203/remoteEntry.js"
+  name: 'admin',
+  exposes: {
+    './Module': './projects/admin/src/app/app.module.ts',
   },
   shared: {
     "@angular/core": { singleton: true, strictVersion: true },

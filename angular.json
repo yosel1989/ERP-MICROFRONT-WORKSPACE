@@ -134,11 +134,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/auth",
 						"index": "projects/auth/src/index.html",
-						"browser": "projects/auth/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -147,13 +146,17 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/auth/public"
+								"input": "projects/auth/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/auth/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"main": "projects/auth/src/main.ts",
+						"extraWebpackConfig": "projects/auth/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -169,7 +172,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/auth/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -180,16 +184,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "auth:build:production"
+							"buildTarget": "auth:build:production",
+							"extraWebpackConfig": "projects/auth/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "auth:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/auth/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
@@ -236,11 +246,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/admin",
 						"index": "projects/admin/src/index.html",
-						"browser": "projects/admin/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -249,13 +258,17 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/admin/public"
+								"input": "projects/admin/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/admin/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"main": "projects/admin/src/main.ts",
+						"extraWebpackConfig": "projects/admin/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -271,7 +284,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/admin/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -282,16 +296,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "admin:build:production"
+							"buildTarget": "admin:build:production",
+							"extraWebpackConfig": "projects/admin/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "admin:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/admin/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
@@ -338,11 +358,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/gps",
 						"index": "projects/gps/src/index.html",
-						"browser": "projects/gps/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -351,13 +370,17 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/gps/public"
+								"input": "projects/gps/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/gps/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"main": "projects/gps/src/main.ts",
+						"extraWebpackConfig": "projects/gps/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -373,7 +396,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/gps/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -384,16 +408,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "gps:build:production"
+							"buildTarget": "gps:build:production",
+							"extraWebpackConfig": "projects/gps/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "gps:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4203,
+						"publicHost": "http://localhost:4203",
+						"extraWebpackConfig": "projects/gps/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
@@ -420,6 +450,32 @@
 					}
 				}
 			}
+		}
+	},
+	"schematics": {
+		"@schematics/angular:component": {
+			"type": "component"
+		},
+		"@schematics/angular:directive": {
+			"type": "directive"
+		},
+		"@schematics/angular:service": {
+			"type": "service"
+		},
+		"@schematics/angular:guard": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:interceptor": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:module": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:pipe": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:resolver": {
+			"typeSeparator": "."
 		}
 	}
 }
